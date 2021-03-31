@@ -112,14 +112,19 @@ public class Envelope {
      * Save the location of the currently running JAR and the current version in the update info file.
      * @author LowLevelSubmarine
      */
-    private UpdateInfo saveUpdateInfo() {
+    private void saveUpdateInfo() {
         UpdateInfo json = new UpdateInfo();
         File jarFile = FileBrowser.getJARFile().getFile();
         if (jarFile.isFile()) {
             json.jarFile = jarFile.getAbsolutePath();
         }
         json.lastVersion = this.connector.getCurrentVersion();
-        return json;
+        try {
+            json.save(UPDATE_INFO_FILE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("[Envelope] Something went wrong wile saving the update info file!");
+        }
     }
 
 }
