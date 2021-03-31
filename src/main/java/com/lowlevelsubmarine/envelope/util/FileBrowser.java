@@ -6,7 +6,7 @@ import java.io.File;
 
 public class FileBrowser {
 
-    private File file;
+    private final File file;
 
     public FileBrowser(String file) {
         this(new File(file));
@@ -21,7 +21,7 @@ public class FileBrowser {
     }
 
     public FileBrowser treeDown(String name) {
-        return new FileBrowser(this.file.getAbsolutePath() + File.pathSeparator + name);
+        return new FileBrowser(new File(this.file, name));
     }
 
     public FileBrowser treeSibling(String name) {
