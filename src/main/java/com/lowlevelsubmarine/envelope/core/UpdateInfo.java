@@ -20,14 +20,20 @@ public class UpdateInfo implements Serializable {
 
     public static UpdateInfo load(File file) {
         try {
-            return GSON.fromJson(new FileReader(file), UpdateInfo.class);
+            FileReader reader = new FileReader(file);
+            UpdateInfo info = GSON.fromJson(reader, UpdateInfo.class);
+            reader.close();
+            file.delete();
+            return info;
         } catch (Exception e) {
             return null;
         }
     }
 
     public void save(File file) throws IOException {
-        GSON.toJson(this, new FileWriter(file));
+        FileWriter writer = new FileWriter(file);
+        GSON.toJson(this, writer);
+        writer.close();
     }
 
 }

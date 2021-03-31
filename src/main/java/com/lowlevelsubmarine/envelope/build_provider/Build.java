@@ -6,7 +6,6 @@ import java.net.URL;
 
 public class Build {
 
-    private Envelope envelope;
     private final String name;
     private final String version;
     private final URL downloadURL;
@@ -36,10 +35,6 @@ public class Build {
 
     public URL getDownloadURL() {
         return downloadURL;
-    }
-
-    public void setEnvelope(Envelope envelope) {
-        this.envelope = envelope;
     }
 
 }

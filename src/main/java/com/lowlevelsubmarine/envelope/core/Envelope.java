@@ -3,10 +3,14 @@ package com.lowlevelsubmarine.envelope.core;
 import com.google.gson.Gson;
 import com.lowlevelsubmarine.envelope.build_provider.Build;
 import com.lowlevelsubmarine.envelope.build_provider.BuildComparator;
+import com.lowlevelsubmarine.envelope.build_provider.BuildProvider;
+import com.lowlevelsubmarine.envelope.build_provider.GitHubReleasesBuildProvider;
 import com.lowlevelsubmarine.envelope.util.FileBrowser;
 import com.lowlevelsubmarine.envelope.util.FileReleaseWatcher;
 import com.lowlevelsubmarine.envelope.versioning.IncompatibleVersionException;
 import com.lowlevelsubmarine.envelope.versioning.Version;
+import com.lowlevelsubmarine.envelope.versioning.VersionInterpreter;
+import com.lowlevelsubmarine.envelope.versioning.WrappedSemanticVersionInterpreter;
 
 import java.io.File;
 import java.io.IOException;
