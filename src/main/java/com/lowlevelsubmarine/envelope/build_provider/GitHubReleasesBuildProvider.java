@@ -5,7 +5,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.lowlevelsubmarine.envelope.core.Envelope;
 import com.lowlevelsubmarine.envelope.core.EnvelopeConnector;
-import com.lowlevelsubmarine.envelope.core.Update;
 import com.lowlevelsubmarine.envelope.util.HttpRequest;
 import com.lowlevelsubmarine.envelope.util.JsonSurfer;
 import com.lowlevelsubmarine.envelope.versioning.VersionInterpreter;
@@ -13,7 +12,9 @@ import com.lowlevelsubmarine.envelope.versioning.WrappedSemanticVersionInterpret
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.security.InvalidParameterException;
 import java.util.LinkedList;
 

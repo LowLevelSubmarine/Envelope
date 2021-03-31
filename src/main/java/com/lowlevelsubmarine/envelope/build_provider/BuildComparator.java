@@ -20,11 +20,11 @@ public class BuildComparator implements Comparator<Build> {
             Version v1 = interpreter.interpret(b1.getVersion());
             Version v2 = interpreter.interpret(b2.getVersion());
             if (v1.isHigherThan(v2)) {
-                return 1;
+                return -1;
             } else if (v1.isEqualTo(v2)) {
                 return 0;
             } else {
-                return -1;
+                return 1;
             }
         } catch (IncompatibleVersionException e) {
             return 0;
