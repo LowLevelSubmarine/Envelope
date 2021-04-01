@@ -38,7 +38,7 @@ public class Update {
     }
 
     public void verify() throws MalformedUpdateException {
-        if (!(this.localJAR.exists() && this.localJAR.canExecute())) throw new MalformedUpdateException();
+        if (!this.localJAR.exists()) throw new MalformedUpdateException();
     }
 
     void runJAR() throws IOException {
