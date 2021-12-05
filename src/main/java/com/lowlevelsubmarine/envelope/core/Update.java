@@ -16,21 +16,23 @@ public class Update {
     private final Build build;
     private final File localJAR;
 
-    public Update(Build build) {
+    Update(Build build) {
         this.build = build;
         this.localJAR = new File(fileNameFromURL(build.getDownloadURL()));
         new FileDownloader(build.getDownloadURL(), this.localJAR).download();
     }
 
-    private static String fileNameFromURL(URL url) {
-        Matcher matcher = PATTERN_FILENAME.matcher(url.getFile());
-        matcher.find();
-        return matcher.group();
-    }
-
-    public Update(Build build, File localJAR) {
+    Update(Build build, File localJAR) {
         this.build = build;
         this.localJAR = localJAR;
+    }
+
+    void runJAR() throws IOException {
+        new Executor(this.localJAR).exec();
+    }
+
+    public Build getBuild() {
+        return this.build;
     }
 
     public boolean delete() {
@@ -41,8 +43,10 @@ public class Update {
         if (!this.localJAR.exists()) throw new MalformedUpdateException();
     }
 
-    void runJAR() throws IOException {
-        new Executor(this.localJAR).exec();
+    private static String fileNameFromURL(URL url) {
+        Matcher matcher = PATTERN_FILENAME.matcher(url.getFile());
+        matcher.find();
+        return matcher.group();
     }
 
 }
